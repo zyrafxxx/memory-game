@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Gra Memory</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            background: #eebd7e
+        }
+
+        .gramemory {
+            width: 640px;
+            height: 640px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            perspective: 1000px;
+        }
+
+        .karta {
+            width: calc(25% - 10px);
+            height: calc(33.333% - 10px);
+            margin: 5px;
+            position: relative;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+            transform: scale(1);
+            transform-style: preserve-3d;
+            transition: transform .5s;
+        }
+
+
+        .przod,
+        .tyl {
+            width: 100%;
+            height: 100%;
+            padding: 5px;
+            position: absolute;
+            border-radius: 5px;
+            background: #101744;
+            backface-visibility: hidden;
+        }
+
+        .przod {
+            transform: rotateY(180deg);
+        }
+
+        .karta:active {
+            transform: scale (0.97);
+            transition: transform .2s;
+
+        }
+
+        .karta.flip {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="gramemory">
+        <div class="karta" data-framework="bocian">
+            <img class="przod"
+                src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/White-Stork-icon.png"
+                alt="bocian">
+            <img class="tyl"
+                src="./photos/Juego De Memoria.jpg"
+                alt="to co na tyle">
+        </div>
+
+        <div class="karta" data-framework="wieloryb">
+            <img class="przod"
+                src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/256/Whale-icon.png"
+                alt="wieloryb">
+            <img class="tyl"
+                src="./photos/Juego De Memoria.jpg"
+                alt="to co na tyle">
+        </div>
+
+        <div class="karta" data-framework="chomik">
+            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Hamster-icon.png" alt="chomik">
+            <img class="tyl"
+                src="./photos/Juego De Memoria.jpg"
+                alt="to co na tyle">
+        </div>
+
+        <div class="karta" data-framework="bawol">
+            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Water-Buffalo-icon.png" alt="bawol">
+            <img class="tyl"
+                src="./photos/Juego De Memoria.jpg"
+                alt="to co na tyle">
+        </div>
+
+        <div class="karta" data-framework="waz">
+            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Snake-icon.png" alt="waz">
+            <img class="tyl"
+                src="./photos/Juego De Memoria.jpg"
+                alt="to co na tyle">
+        </div>
+
+        <div class="karta" data-framework="waz">
+            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Snake-icon.png" alt="waz">
+            <img class="tyl"
+                src="./photos/Juego De Memoria.jpg"
+                alt="to co na tyle">
+        </div>
+
+        <div class="karta" data-framework="wieloryb">
+            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/256/Whale-icon.png" alt="wieloryb">
+            <img class="tyl"
+                src="./photos/Juego De Memoria.jpg"
+                alt="to co na tyle">
+        </div>
+
+        <div class="karta" data-framework="bocian">
+            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/White-Stork-icon.png" alt="bocian">
+            <img class="tyl"
+                src="./photos/Juego De Memoria.jpg"
+                alt="to co na tyle">
+        </div>
+
+        <div class="karta" data-framework="chomik">
+            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Hamster-icon.png" alt="chomik">
+            <img class="tyl"
+                src="./photos/Juego De Memoria.jpg"
+                alt="to co na tyle">
+        </div>
+
+        <div class="karta" data-framework="bawol">
+            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Water-Buffalo-icon.png" alt="bawol">
+            <img class="tyl"
+                src="./photos/Juego De Memoria.jpg"
+                alt="to co na tyle">
+        </div>
+
+        <div class="karta" data-framework="nietoperz">
+            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Bat-icon.png" alt="nietoperz">
+            <img class="tyl"
+                src="./photos/Juego De Memoria.jpg"
+                alt="to co na tyle">
+        </div>
+
+        <div class="karta" data-framework="nietoperz">
+            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Bat-icon.png" alt="nietoperz">
+            <img class="tyl"
+                src="./photos/Juego De Memoria.jpg"
+                alt="to co na tyle">
+        </div>
+
+    </section>
+</body>
+<script>
+    const cards = document.querySelectorAll('.karta');
+    let odwrocona = false;
+    let pierwsza, druga;
+
+    function flipCard() {
+        this.classList.add('flip');
+    
+
+    if (!odwrocona) {
+        odwrocona = true;
+        pierwsza = this;
+    return;
+   }
+
+   druga = this;
+   odwrocona = false;
+
+   checkForMatch();
+    }
+
+ function checkForMatch() {
+    let isMatch = pierwsza.dataset.framework === druga.dataset.framework;
+    isMatch ? disableCards() : unflipCards();
+ }
+
+ function disableCards() {
+   pierwsza.removeEventListener('click', flipCard);
+   druga.removeEventListener('click', flipCard);
+ }
+
+ function unflipCards() {
+   setTimeout(() => {
+     pierwsza.classList.remove('flip');
+     druga.classList.remove('flip');
+   }, 1500);
+ }
+
+
+    cards.forEach(card => card.addEventListener('click', flipCard));
+
+
+
+</script>
+
+</html>

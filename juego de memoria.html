@@ -19,7 +19,7 @@
 
         .gramemory {
             width: 640px;
-            height: 640px;
+            height: 630px;
             margin: auto;
             display: flex;
             flex-wrap: wrap;
@@ -62,139 +62,198 @@
         .karta.flip {
             transform: rotateY(180deg);
         }
+
+        .gameover {
+            width: 300px;
+            height: 100px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 2px solid #222222;
+            border-radius: 5px;
+            transform: translate(-50%, -50%);
+            background-color: #DDDDDD;
+            color: #222222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .wynik {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #101744;
+        }
     </style>
 </head>
 
 <body>
+    <h2 class="wynik">Wynik: <span id='score'>0</span></h2>
     <section class="gramemory">
         <div class="karta" data-framework="bocian">
             <img class="przod"
                 src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/White-Stork-icon.png"
                 alt="bocian">
-            <img class="tyl"
-                src="./photos/Juego De Memoria.jpg"
-                alt="to co na tyle">
+            <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="wieloryb">
             <img class="przod"
                 src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/256/Whale-icon.png"
                 alt="wieloryb">
-            <img class="tyl"
-                src="./photos/Juego De Memoria.jpg"
-                alt="to co na tyle">
+            <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="chomik">
-            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Hamster-icon.png" alt="chomik">
-            <img class="tyl"
-                src="./photos/Juego De Memoria.jpg"
-                alt="to co na tyle">
+            <img class="przod"
+                src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Hamster-icon.png"
+                alt="chomik">
+            <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="bawol">
-            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Water-Buffalo-icon.png" alt="bawol">
-            <img class="tyl"
-                src="./photos/Juego De Memoria.jpg"
-                alt="to co na tyle">
+            <img class="przod"
+                src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Water-Buffalo-icon.png"
+                alt="bawol">
+            <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="waz">
-            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Snake-icon.png" alt="waz">
-            <img class="tyl"
-                src="./photos/Juego De Memoria.jpg"
-                alt="to co na tyle">
+            <img class="przod"
+                src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Snake-icon.png"
+                alt="waz">
+            <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="waz">
-            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Snake-icon.png" alt="waz">
-            <img class="tyl"
-                src="./photos/Juego De Memoria.jpg"
-                alt="to co na tyle">
+            <img class="przod"
+                src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Snake-icon.png"
+                alt="waz">
+            <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="wieloryb">
-            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/256/Whale-icon.png" alt="wieloryb">
-            <img class="tyl"
-                src="./photos/Juego De Memoria.jpg"
-                alt="to co na tyle">
+            <img class="przod"
+                src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/256/Whale-icon.png"
+                alt="wieloryb">
+            <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="bocian">
-            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/White-Stork-icon.png" alt="bocian">
-            <img class="tyl"
-                src="./photos/Juego De Memoria.jpg"
-                alt="to co na tyle">
+            <img class="przod"
+                src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/White-Stork-icon.png"
+                alt="bocian">
+            <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="chomik">
-            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Hamster-icon.png" alt="chomik">
-            <img class="tyl"
-                src="./photos/Juego De Memoria.jpg"
-                alt="to co na tyle">
+            <img class="przod"
+                src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Hamster-icon.png"
+                alt="chomik">
+            <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="bawol">
-            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Water-Buffalo-icon.png" alt="bawol">
-            <img class="tyl"
-                src="./photos/Juego De Memoria.jpg"
-                alt="to co na tyle">
+            <img class="przod"
+                src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Water-Buffalo-icon.png"
+                alt="bawol">
+            <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="nietoperz">
-            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Bat-icon.png" alt="nietoperz">
-            <img class="tyl"
-                src="./photos/Juego De Memoria.jpg"
-                alt="to co na tyle">
+            <img class="przod"
+                src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Bat-icon.png"
+                alt="nietoperz">
+            <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="nietoperz">
-            <img class="przod" src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Bat-icon.png" alt="nietoperz">
-            <img class="tyl"
-                src="./photos/Juego De Memoria.jpg"
-                alt="to co na tyle">
+            <img class="przod"
+                src="https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/512/Bat-icon.png"
+                alt="nietoperz">
+            <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
     </section>
 </body>
 <script>
     const cards = document.querySelectorAll('.karta');
+    const scoreSpan = document.getElementById('score');
+    const MAX_SCORE = 6;
+
     let odwrocona = false;
+    let lockBoard = false;
     let pierwsza, druga;
+    let score = 0;
 
     function flipCard() {
+        if (lockBoard) return;
+        if (this === pierwsza) return;
         this.classList.add('flip');
-    
 
-    if (!odwrocona) {
-        odwrocona = true;
-        pierwsza = this;
-    return;
-   }
 
-   druga = this;
-   odwrocona = false;
+        if (!odwrocona) {
+            odwrocona = true;
+            pierwsza = this;
+            return;
+        }
 
-   checkForMatch();
+        druga = this;
+
+        checkForMatch();
     }
 
- function checkForMatch() {
-    let isMatch = pierwsza.dataset.framework === druga.dataset.framework;
-    isMatch ? disableCards() : unflipCards();
- }
+    function checkForMatch() {
+        let isMatch = pierwsza.dataset.framework === druga.dataset.framework;
+        isMatch ? disableCards() : unflipCards();
 
- function disableCards() {
-   pierwsza.removeEventListener('click', flipCard);
-   druga.removeEventListener('click', flipCard);
- }
+    }
 
- function unflipCards() {
-   setTimeout(() => {
-     pierwsza.classList.remove('flip');
-     druga.classList.remove('flip');
-   }, 1500);
- }
+    function disableCards() {
+        pierwsza.removeEventListener('click', flipCard);
+        druga.removeEventListener('click', flipCard);
+        score = score + 1;
+        scoreSpan.innerText = score;
+        resetBoard();
+        if (score === MAX_SCORE) {
+            gameOver()
+        }
+    }
 
+    function unflipCards() {
+        lockBoard = true;
+        setTimeout(() => {
+            pierwsza.classList.remove('flip');
+            druga.classList.remove('flip');
+            resetBoard();
+        }, 1000);
+    }
+
+
+    function resetBoard() {
+        [odwrocona, lockBoard] = [false, false];
+        [pierwsza, druga] = [null, null];
+
+    }
+
+    function gameOver() {
+        const go = document.createElement('div')
+        go.innerText = 'Wygrana! Przeładuj stronę, aby zagrać ponownie.'
+        go.classList.add('gameover')
+        document.body.appendChild(go)
+    }
+
+
+
+    (function shuffle() {
+        cards.forEach(card => {
+            let ramdomPos = Math.floor(Math.random() * 12);
+            card.style.order = ramdomPos;
+        });
+    })();
 
     cards.forEach(card => card.addEventListener('click', flipCard));
 

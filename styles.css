@@ -80,3 +80,13 @@ body {
     left: 20px;
     color: #101744;
 }
+@media screen and (max-width: 660px) {
+    .gramemory {
+        width: 375px;
+        height: 425px;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        perspective: 1000px;
+    }
+}

@@ -4,92 +4,8 @@
 
 <head>
     <title>Juego de memoria</title>
-   
-    <style>
-       
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            height: 100vh;
-            display: flex;
-            background: #eebd7e
-        }
-
-        .gramemory {
-            width: 640px;
-            height: 630px;
-            margin: auto;
-            display: flex;
-            flex-wrap: wrap;
-            perspective: 1000px;
-        }
-
-        .karta {
-            width: calc(25% - 10px);
-            height: calc(33.333% - 10px);
-            margin: 5px;
-            position: relative;
-            box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
-            transform: scale(1);
-            transform-style: preserve-3d;
-            transition: transform .5s;
-        }
-
-
-        .przod,
-        .tyl {
-            width: 100%;
-            height: 100%;
-            padding: 5px;
-            position: absolute;
-            border-radius: 5px;
-            background: #101744;
-            backface-visibility: hidden;
-        }
-
-        .przod {
-            transform: rotateY(180deg);
-        }
-
-        .karta:active {
-            transform: scale (0.97);
-            transition: transform .2s;
-
-        }
-
-        .karta.flip {
-            transform: rotateY(180deg);
-        }
-
-        .gameover {
-            width: 300px;
-            height: 100px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            border: 2px solid #222222;
-            border-radius: 5px;
-            transform: translate(-50%, -50%);
-            background-color: #DDDDDD;
-            color: #222222;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-        }
-
-        .wynik {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: #101744;
-        }
-    </style>
+    <link rel="stylesheet" href="./styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
@@ -131,44 +47,32 @@
         </div>
 
         <div class="karta" data-framework="waz">
-            <img class="przod"
-                src="./photos/la serpiente.jpg"
-                alt="waz">
+            <img class="przod" src="./photos/la serpiente.jpg" alt="waz">
             <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="wieloryb">
-            <img class="przod"
-                src="./photos/la ballena.jpg"
-                alt="wieloryb">
+            <img class="przod" src="./photos/la ballena.jpg" alt="wieloryb">
             <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="bocian">
-            <img class="przod"
-                src="./photos/la ciguena.jpg"
-                alt="bocian">
+            <img class="przod" src="./photos/la ciguena.jpg" alt="bocian">
             <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="chomik">
-            <img class="przod"
-                src="./photos/el hámster.jpg"
-                alt="chomik">
+            <img class="przod" src="./photos/el hámster.jpg" alt="chomik">
             <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="bawol">
-            <img class="przod"
-                src="./photos/el búfalo.jpg"
-                alt="bawol">
+            <img class="przod" src="./photos/el búfalo.jpg" alt="bawol">
             <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
         <div class="karta" data-framework="nietoperz">
-            <img class="przod"
-                src="./photos/el murciélago.jpg"
-                alt="nietoperz">
+            <img class="przod" src="./photos/el murciélago.jpg" alt="nietoperz">
             <img class="tyl" src="./photos/Juego De Memoria.jpg" alt="to co na tyle">
         </div>
 
@@ -180,87 +84,7 @@
         </div>
 
     </section>
+    <script src="./scripts.js"></script>
 </body>
-<script>
-    const cards = document.querySelectorAll('.karta');
-    const scoreSpan = document.getElementById('score');
-    const MAX_SCORE = 6;
-
-    let odwrocona = false;
-    let lockBoard = false;
-    let pierwsza, druga;
-    let score = 0;
-
-    function flipCard() {
-        if (lockBoard) return;
-        if (this === pierwsza) return;
-        this.classList.add('flip');
-
-
-        if (!odwrocona) {
-            odwrocona = true;
-            pierwsza = this;
-            return;
-        }
-
-        druga = this;
-
-        checkForMatch();
-    }
-
-    function checkForMatch() {
-        let isMatch = pierwsza.dataset.framework === druga.dataset.framework;
-        isMatch ? disableCards() : unflipCards();
-
-    }
-
-    function disableCards() {
-        pierwsza.removeEventListener('click', flipCard);
-        druga.removeEventListener('click', flipCard);
-        score = score + 1;
-        scoreSpan.innerText = score;
-        resetBoard();
-        if (score === MAX_SCORE) {
-            gameOver()
-        }
-    }
-
-    function unflipCards() {
-        lockBoard = true;
-        setTimeout(() => {
-            pierwsza.classList.remove('flip');
-            druga.classList.remove('flip');
-            resetBoard();
-        }, 1000);
-    }
-
-
-    function resetBoard() {
-        [odwrocona, lockBoard] = [false, false];
-        [pierwsza, druga] = [null, null];
-
-    }
-
-    function gameOver() {
-        const go = document.createElement('div')
-        go.innerText = 'Wygrana! Przeładuj stronę, aby zagrać ponownie.'
-        go.classList.add('gameover')
-        document.body.appendChild(go)
-    }
- 
-
-
-    (function shuffle() {
-        cards.forEach(card => {
-            let ramdomPos = Math.floor(Math.random() * 12);
-            card.style.order = ramdomPos;
-        });
-    })();
-
-    cards.forEach(card => card.addEventListener('click', flipCard));
-
-
-
-</script>
 
 </html>
